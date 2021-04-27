@@ -6,7 +6,7 @@ import {
   showSuccessMsg,
 } from "../../utils/notification/Notification";
 
-function ActivationEmail() {
+const ActivationEmail = () => {
   const { activation_token } = useParams();
   const [err, setErr] = useState("");
   const [success, setSuccess] = useState("");

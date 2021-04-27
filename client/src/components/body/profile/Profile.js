@@ -2,10 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { isLength, isMatch } from "../../utils/validation/Validation";
-import {
-  showSuccessMsg,
-  showErrMsg,
-} from "../../utils/notification/Notification";
+import { showSuccessMsg, showErrMsg } from "../../utils/notification/Notification";
 
 const initialState = {
   name: "",
@@ -18,10 +15,9 @@ const initialState = {
   success: "",
 };
 
-function Profile() {
+const Profile = () => {
   const auth = useSelector((state) => state.auth);
   const token = useSelector((state) => state.token);
-
   const { user } = auth;
   const [data, setData] = useState(initialState);
   const {
@@ -34,7 +30,6 @@ function Profile() {
     err,
     success,
   } = data;
-
   const [avatar, setAvatar] = useState(false);
   const [loading, setLoading] = useState(false);
 

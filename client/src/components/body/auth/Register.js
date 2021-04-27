@@ -21,7 +21,7 @@ const initialState = {
   success: "",
 };
 
-function Register() {
+const Register = () => {
   const [user, setUser] = useState(initialState);
 
   const { name, email, password, cf_password, err, success } = user;

@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import {
-  showErrMsg,
-  showSuccessMsg,
-} from "../../utils/notification/Notification";
+import { showErrMsg, showSuccessMsg } from "../../utils/notification/Notification";
 import { isLength, isMatch } from "../../utils/validation/Validation";
 
 const initialState = {
@@ -14,7 +11,7 @@ const initialState = {
   success: "",
 };
 
-function ResetPassword() {
+const ResetPassword = () => {
   const [data, setData] = useState(initialState);
   const { token } = useParams();
 

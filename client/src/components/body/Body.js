@@ -4,20 +4,17 @@ import Login from "./auth/Login";
 import Register from "./auth/Register";
 import ActivationEmail from "./auth/ActivationEmail";
 import NotFound from "../utils/NotFound/NotFound";
-
 import ForgotPass from "../body/auth/ForgotPassword";
 import ResetPass from "../body/auth/ResetPassword";
-
 import Profile from "../body/profile/Profile";
-import EditUser from "../body/profile/EditUser";
-
 import Home from "../body/home/Home";
-
 import { useSelector } from "react-redux";
 
-function Body() {
+const Body = () => {
+
   const auth = useSelector((state) => state.auth);
-  const { isLogged, isAdmin } = auth;
+  const { isLogged } = auth;
+
   return (
     <section>
       <Switch>
@@ -52,11 +49,7 @@ function Body() {
           component={isLogged ? Profile : NotFound}
           exact
         />
-        <Route
-          path="/edit_user/:id"
-          component={isAdmin ? EditUser : NotFound}
-          exact
-        />
+
       </Switch>
     </section>
   );

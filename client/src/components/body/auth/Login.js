@@ -15,7 +15,7 @@ const initialState = {
   success: "",
 };
 
-function Login() {
+const Login = () => {
   const [user, setUser] = useState(initialState);
   const dispatch = useDispatch();
   const history = useHistory();

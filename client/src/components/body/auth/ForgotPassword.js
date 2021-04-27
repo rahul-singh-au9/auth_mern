@@ -12,7 +12,7 @@ const initialState = {
   success: "",
 };
 
-function ForgotPassword() {
+const ForgotPassword = () => {
   const [data, setData] = useState(initialState);
 
   const { email, err, success } = data;
