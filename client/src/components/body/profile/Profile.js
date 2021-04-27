@@ -137,6 +137,10 @@ function Profile() {
     if (password) updatePassword();
   };
 
+  if (user?.dob) {
+    var user_dob = (user.dob).slice(0,10)
+  }
+
   return (
     <>
       <div>
@@ -216,7 +220,7 @@ function Profile() {
               type="Date"
               name="dob"
               id="dob"
-              defaultValue={user.dob}
+              defaultValue={user_dob}
               placeholder="Your Date of Birth"
               onChange={handleChange}
             />
