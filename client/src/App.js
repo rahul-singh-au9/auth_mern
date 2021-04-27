@@ -1,18 +1,16 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-
 import {
   dispatchLogin,
   fetchUser,
   dispatchGetUser,
 } from "./redux/actions/authAction";
-
 import Header from "./components/Header/Header";
 import Body from "./components/body/Body";
 import axios from "axios";
 
-function App() {
+const App = () => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.token);
   const auth = useSelector((state) => state.auth);
