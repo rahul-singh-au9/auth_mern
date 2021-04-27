@@ -33,26 +33,19 @@ const userController = {
 
       const passwordHash = await bcrypt.hash(password, 12);
 
-      // const newUser = {
-      //   name,
-      //   email,
-      //   password: passwordHash,
-      // };
-
-      const newUser = await Users.create({
+      const newUser = {
         name,
         email,
         password: passwordHash,
-      });
+      };
 
-      await newUser.save();
-      // const activation_token = createActivationToken(newUser);
+      const activation_token = createActivationToken(newUser);
 
-      // const url = `${CLIENT_URL}/user/activate/${activation_token}`;
-      // sendMail(email, url, "Verify your email address");
+      const url = `${CLIENT_URL}/user/activate/${activation_token}`;
+      sendMail(email, url, "Verify your email address");
 
       res.json({
-        msg: "Register Success! .",
+        msg: "Register Success! please activate your email.",
       });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
