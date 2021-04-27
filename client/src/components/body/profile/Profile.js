@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "axios";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { isLength, isMatch } from "../../utils/validation/Validation";
 import {
   showSuccessMsg,
   showErrMsg,
 } from "../../utils/notification/Notification";
-import {
-  fetchAllUsers,
-  dispatchGetAllUsers,
-} from "../../../redux/actions/usersAction";
 
 const initialState = {
   name: "",
   password: "",
   cf_password: "",
+  phone: "",
+  address: "",
+  dob: "",
   err: "",
   success: "",
 };
@@ -23,23 +22,21 @@ function Profile() {
   const auth = useSelector((state) => state.auth);
   const token = useSelector((state) => state.token);
 
-  const { user, isAdmin } = auth;
+  const { user } = auth;
   const [data, setData] = useState(initialState);
-  const { name, password, cf_password, err, success } = data;
+  const {
+    name,
+    password,
+    cf_password,
+    phone,
+    address,
+    dob,
+    err,
+    success,
+  } = data;
 
   const [avatar, setAvatar] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [callback, setCallback] = useState(false);
-
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    if (isAdmin) {
-      fetchAllUsers(token).then((res) => {
-        dispatch(dispatchGetAllUsers(res));
-      });
-    }
-  }, [token, isAdmin, dispatch, callback]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -92,6 +89,10 @@ function Profile() {
         "/user/update",
         {
           name: name ? name : user.name,
+          phone: phone ? phone : user.phone,
+          address: address ? address : user.address,
+          dob: dob ? dob : user.dob,
+
           avatar: avatar ? avatar : user.avatar,
         },
         {
@@ -132,7 +133,7 @@ function Profile() {
   };
 
   const handleUpdate = () => {
-    if (name || avatar) updateInfor();
+    if (name || avatar || phone || address || dob) updateInfor();
     if (password) updatePassword();
   };
 
@@ -145,7 +146,7 @@ function Profile() {
       </div>
       <div className="profile_page">
         <div className="col-left">
-          <h2>{isAdmin ? "Admin Profile" : "User Profile"}</h2>
+          <h2>User Profile</h2>
 
           <div className="avatar">
             <img src={avatar ? avatar : user.avatar} alt="" />
@@ -182,6 +183,42 @@ function Profile() {
               defaultValue={user.email}
               placeholder="Your email address"
               disabled
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="phone">Phone</label>
+            <input
+              type="Number"
+              name="phone"
+              id="phone"
+              defaultValue={user.phone}
+              placeholder="Your Phone Number"
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="address">Address</label>
+            <input
+              type="text"
+              name="address"
+              id="address"
+              defaultValue={user.address}
+              placeholder="Your Address"
+              onChange={handleChange}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="dob">Date of Birth</label>
+            <input
+              type="Date"
+              name="dob"
+              id="dob"
+              defaultValue={user.dob}
+              placeholder="Your Date of Birth"
+              onChange={handleChange}
             />
           </div>
 
