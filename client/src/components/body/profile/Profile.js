@@ -138,7 +138,7 @@ function Profile() {
   };
 
   if (user?.dob) {
-    var user_dob = (user.dob).slice(0,10)
+    var user_dob = user.dob.slice(0, 10);
   }
 
   return (
@@ -193,9 +193,10 @@ function Profile() {
           <div className="form-group">
             <label htmlFor="phone">Phone</label>
             <input
-              type="Number"
+              type="tel"
               name="phone"
               id="phone"
+              maxLength="10"
               defaultValue={user.phone}
               placeholder="Your Phone Number"
               onChange={handleChange}
