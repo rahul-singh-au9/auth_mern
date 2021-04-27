@@ -2,6 +2,7 @@ const nodemailer = require("nodemailer");
 const { google } = require("googleapis");
 const { OAuth2 } = google.auth;
 const OAUTH_PLAYGROUND = "https://developers.google.com/oauthplayground";
+// https://mail.google.com
 
 const {
   MAILING_SERVICE_CLIENT_ID,
@@ -42,7 +43,7 @@ const sendEmail = (to, url, txt) => {
     subject: "Wecome Message, Account Activation",
     html: `
             <div style="max-width: 700px; margin:auto; border: 10px solid #ddd; padding: 50px 20px; font-size: 110%;">
-            <h2 style="text-align: center; text-transform: uppercase;color: teal;">Welcome to the INNVONIX.</h2>
+            <h2 style="text-align: center; text-transform: uppercase;color: teal;">Welcome to the iDreamCareer.</h2>
             <p>Congratulations! You're almost set to start using iDreamCareer✮.
                 Just click the button below to validate your email address.
             </p>
