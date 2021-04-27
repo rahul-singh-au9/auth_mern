@@ -17,9 +17,6 @@ const initialState = {
   cf_password: "",
   err: "",
   success: "",
-  phone: "",
-  address: "",
-  dob: "",
 };
 
 function Profile() {
@@ -27,18 +24,8 @@ function Profile() {
   const token = useSelector((state) => state.token);
 
   const { user, isAdmin } = auth;
-  console.log(user);
   const [data, setData] = useState(initialState);
-  const {
-    name,
-    password,
-    cf_password,
-    phone,
-    address,
-    dob,
-    err,
-    success,
-  } = data;
+  const { name, password, cf_password, err, success } = data;
 
   const [avatar, setAvatar] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -56,18 +43,7 @@ function Profile() {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    const { phone, pvalue } = e.target;
-    const { address, avalue } = e.target;
-    const { dob, dvalue } = e.target;
-    setData({
-      ...data,
-      [name]: value,
-      [phone]: pvalue,
-      [address]: avalue,
-      [dob]: dvalue,
-      err: "",
-      success: "",
-    });
+    setData({ ...data, [name]: value, err: "", success: "" });
   };
 
   const changeAvatar = async (e) => {
@@ -116,9 +92,6 @@ function Profile() {
         "/user/update",
         {
           name: name ? name : user.name,
-          phone: phone ? phone : user.phone,
-          address: address ? address : user.address,
-          dob: dob ? dob : user.dob,
           avatar: avatar ? avatar : user.avatar,
         },
         {
@@ -159,7 +132,7 @@ function Profile() {
   };
 
   const handleUpdate = () => {
-    if (name || avatar || phone || address || dob) updateInfor();
+    if (name || avatar) updateInfor();
     if (password) updatePassword();
   };
 
@@ -169,9 +142,6 @@ function Profile() {
         {err && showErrMsg(err)}
         {success && showSuccessMsg(success)}
         {loading && <h3>Loading.....</h3>}
-      </div>
-      <div className="home_pag">
-        <h2 style={{ marginLeft: "34%" }}>welcome to iDreamCareer</h2>
       </div>
       <div className="profile_page">
         <div className="col-left">
@@ -212,39 +182,6 @@ function Profile() {
               defaultValue={user.email}
               placeholder="Your email address"
               disabled
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="phone">Phone number</label>
-            <input
-              type="Number"
-              name="phone"
-              id="phone"
-              defaultValue={user.phone}
-              placeholder="Your Phone number"
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="address">Address</label>
-            <input
-              type="text"
-              name="address"
-              id="address"
-              defaultValue={user.address}
-              placeholder="Your Address"
-            />
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="dob">Date of Birth</label>
-            <input
-              type="date"
-              name="dob"
-              id="dob"
-              defaultValue={user.dob}
-              placeholder="Your Date of Birth"
             />
           </div>
 

@@ -4,8 +4,8 @@
     background: rgb(255, 249, 215);
     color: #333;
 }
-.home_page h2{
-    font-size: 2rem;
+.home_page h1{
+    font-size: 3rem;
     margin: 10px 0;
     color: teal;
 }

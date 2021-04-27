@@ -4,7 +4,7 @@ import "./home.css";
 const Home = ()  =>{
   return (
     <div className="home_page">
-      <h2 style={{ marginLeft: "34%"}}>welcome to iDreamCareer</h2>
+      <h1 style={{ marginLeft: "25%", marginTop: "13%"}}>welcome to iDreamCareer</h1>
     </div>
   );
 }

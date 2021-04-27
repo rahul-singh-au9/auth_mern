@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 import {
   dispatchLogin,
@@ -45,12 +45,7 @@ function App() {
     <BrowserRouter>
       <div className="App">
         <Header />
-        <Switch>
-          <Route exact path="/" component={Body} />
-          <Route exact path="/profile" component={Body} />
-          <Route exact path="/login" component={Body} />
-          <Route exact path="/register" component={Body} />
-        </Switch>
+        <Body/>
       </div>
     </BrowserRouter>
   );
