@@ -1,18 +1,3 @@
-<img src = "https://i.ibb.co/GPFcmtb/Screenshot-64.png">
-
-<img src = "https://i.ibb.co/Pzx8R68/Screenshot-68.png">
-
-<img src = "https://i.ibb.co/HBvHSsx/Screenshot-65.png">
-
-<img src = "https://i.ibb.co/7S7BCvp/Screenshot-66.png">
-
-<img src = "https://i.ibb.co/HG5ypxT/Screenshot-67.png">
-
-<img src = "https://i.ibb.co/LtNtPtz/Screenshot-69.png">
-
-<img src = "https://i.ibb.co/7WJmB9h/Screenshot-70.png">
-
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
