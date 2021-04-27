@@ -1,0 +1,16 @@
+.home_page{
+    min-height: calc(100vh - 100px);
+    padding: 20px;
+    background: rgb(255, 249, 215);
+    color: #333;
+}
+.home_page h2{
+    font-size: 2rem;
+    margin: 10px 0;
+    color: teal;
+}
+
+.home_page h3{
+    color: chocolate;
+    margin-top: 30px;
+}
