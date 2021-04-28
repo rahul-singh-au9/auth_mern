@@ -2,13 +2,10 @@ const Users = require("../models/userModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const sendMail = require("./emailController");
-
 const { google } = require("googleapis");
 const { OAuth2 } = google.auth;
 const fetch = require("node-fetch");
-
 const client = new OAuth2(process.env.MAILING_SERVICE_CLIENT_ID);
-
 const { CLIENT_URL } = process.env;
 
 const userController = {
@@ -51,6 +48,7 @@ const userController = {
       return res.status(500).json({ msg: err.message });
     }
   },
+  
   activateEmail: async (req, res) => {
     try {
       const { activation_token } = req.body;
@@ -78,6 +76,7 @@ const userController = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
   login: async (req, res) => {
     try {
       const { email, password } = req.body;
@@ -101,6 +100,7 @@ const userController = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
   getAccessToken: (req, res) => {
     try {
       const rf_token = req.cookies.refreshtoken;
@@ -116,6 +116,7 @@ const userController = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
   forgotPassword: async (req, res) => {
     try {
       const { email } = req.body;
@@ -132,6 +133,7 @@ const userController = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
   resetPassword: async (req, res) => {
     try {
       const { password } = req.body;
@@ -150,6 +152,7 @@ const userController = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
   getUserInfor: async (req, res) => {
     try {
       const user = await Users.findById(req.user.id).select("-password");
@@ -159,15 +162,7 @@ const userController = {
       return res.status(500).json({ msg: err.message });
     }
   },
-  getUsersAllInfor: async (req, res) => {
-    try {
-      const users = await Users.find().select("-password");
 
-      res.json(users);
-    } catch (err) {
-      return res.status(500).json({ msg: err.message });
-    }
-  },
   logout: async (req, res) => {
     try {
       res.clearCookie("refreshtoken", { path: "/user/refresh_token" });
@@ -176,6 +171,7 @@ const userController = {
       return res.status(500).json({ msg: err.message });
     }
   },
+
   updateUser: async (req, res) => {
     try {
       const { name, avatar, phone, address, dob } = req.body;
@@ -194,33 +190,7 @@ const userController = {
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
-  },
-  updateUsersRole: async (req, res) => {
-    try {
-      const { role } = req.body;
-
-      await Users.findOneAndUpdate(
-        { _id: req.params.id },
-        {
-          role,
-        }
-      );
-
-      res.json({ msg: "Update Success!" });
-    } catch (err) {
-      return res.status(500).json({ msg: err.message });
-    }
-  },
-  deleteUser: async (req, res) => {
-    try {
-      await Users.findByIdAndDelete(req.params.id);
-
-      res.json({ msg: "Deleted Success!" });
-    } catch (err) {
-      return res.status(500).json({ msg: err.message });
-    }
-  },
-
+  }
 };
 
 function validateEmail(email) {

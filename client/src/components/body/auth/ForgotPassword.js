@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { isEmail } from "../../utils/validation/Validation";
-import {
-  showErrMsg,
-  showSuccessMsg,
-} from "../../utils/notification/Notification";
+import { showErrMsg, showSuccessMsg } from "../../utils/notification/Notification";
 
 const initialState = {
   email: "",

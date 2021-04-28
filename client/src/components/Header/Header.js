@@ -1,11 +1,9 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
 const Header = () => {
   const auth = useSelector((state) => state.auth);
-
   const { user, isLogged } = auth;
 
   const handleLogout = async () => {
